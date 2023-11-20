@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iCar Plus - Control de Inventario</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos adicionales para los tabs y el contenido */
+        .tab {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .form-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <h1>iCar Plus - Control de Inventario</h1>
+    </header>
+
+    <!-- Agrega los tabs -->
+    <div class="tabs">
+        <button class="tab-btn" onclick="openTab('vehiculos')">Registrar Vehículo</button>
+        <button class="tab-btn" onclick="openTab('repuestos')">Registrar Repuesto</button>
+        <button class="tab-btn" onclick="openTab('mecanicos')">Registrar Mecánico</button>
+        <button class="tab-btn" onclick="openTab('clientes')">Registrar Cliente</button>
+ <!-- Agrega el botón para generar el PDF -->
+        <a href="generar_pdf.php" target="_blank" class="pdf-btn">Generar PDF</a>
+</div>
+
+    <!-- Contenido de los tabs -->
+    <div id="vehiculos" class="tab active">
+        <div class="form-container">
+            <form action="registrar_vehiculo.php" method="post" enctype="multipart/form-data">
+                <label for="descripcion">Descripción:</label>
+                <input type="text" name="descripcion" required>
+
+                <label for="imagen">Imagen:</label>
+                <input type="file" name="imagen" accept="image/*" required>
+
+                <label for="marca">Marca:</label>
+                <input type="text" name="marca" required>
+
+                <label for="modelo">Modelo:</label>
+                <input type="text" name="modelo" required>
+
+                <label for="tipo">Tipo:</label>
+                <input type="text" name="tipo" required>
+
+                <label for="ano">Año:</label>
+                <input type="number" name="ano" required>
+
+                <label for="clasificacion">Clasificación:</label>
+                <input type="text" name="clasificacion" required>
+
+                <label for="repuesto_asignado">Repuesto Asignado:</label>
+                <input type="text" name="repuesto_asignado" required>
+
+                <!-- Puedes agregar más campos según sea necesario -->
+
+                <button type="submit">Registrar Vehículo</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Formulario para Registrar Repuestos -->
+    <div id="form-repuesto" class="form-container">
+        <form action="registrar_repuesto.php" method="post">
+            <label for="descripcion">Descripción:</label>
+            <input type="text" name="descripcion" required>
+
+            <label for="marca">Marca:</label>
+            <input type="text" name="marca" required>
+
+            <label for="modelo">Modelo:</label>
+            <input type="text" name="modelo" required>
+
+            <label for="precio">Precio:</label>
+            <input type="text" name="precio" required>
+
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" name="cantidad" required>
+
+            <button type="submit">Registrar Repuesto</button>
+        </form>
+    </div>
+
+    <!-- Formulario para Registrar Clientes -->
+    <div id="form-cliente" class="form-container">
+        <form action="registrar_cliente.php" method="post">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" required>
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" name="email" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" name="telefono" required>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" name="direccion" required>
+
+            <button type="submit">Registrar Cliente</button>
+        </form>
+    </div>
+
+    <!-- Formulario para Registrar Mecánicos -->
+    <div id="form-mecanico" class="form-container">
+        <form action="registrar_mecanico.php" method="post">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" required>
+
+            <label for="especialidad">Especialidad:</label>
+            <input type="text" name="especialidad" required>
+
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" name="email" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" name="telefono" required>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" name="direccion" required>
+
+            <button type="submit">Registrar Mecánico</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openTab(tabName) {
+        // Ocultar todos los tabs
+        var tabs = document.getElementsByClassName('tab');
+        for (var i = 0; i < tabs.length; i++) {
+            tabs[i].classList.remove('active');
+        }
+
+        // Mostrar el tab seleccionado
+        document.getElementById(tabName).classList.add('active');
+    }
+</script>
+</body>
+
+</html>
